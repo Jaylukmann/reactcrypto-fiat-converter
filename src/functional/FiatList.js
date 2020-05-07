@@ -7,20 +7,20 @@ import  Fiat from '../functional/Fiat';
 
 const FiatList=({fiat})=>{
     return(
-           <div>
-       {
-        fiat.map((f,i)=>{
-               return(
-                   <Fiat
+        <div>
+    {
+
+      fiat.map((f,i)=><React.Fragment key={i}>
+               <Fiat
                    id={fiat[i].id} 
-                   symbol={fiat[i].symbol}
+                   code={fiat[i].code}
                    rate ={fiat[i].rate}/>
-               );
-           })
-       }
-           </div>
+                    </React.Fragment>
+              )
+    }
+        </div>
     )
-   }
+}
    
    
    
