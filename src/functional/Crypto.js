@@ -2,12 +2,12 @@ import React from 'react' ;
 
 
 
- const Crypto =({symbol,price})=> {
+ const Crypto =({code,price})=> {
 
     return (
 
      <div className='crypto'>
-      <p  className='symbol'>{symbol}</p>
+      <p  className='symbol'>{code}</p>
       <p  className='price'>{price}</p> 
         
      </div>
