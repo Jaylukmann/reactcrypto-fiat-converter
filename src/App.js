@@ -4,6 +4,7 @@ import  SearchCrypto from './functional/SearchCrypto';
 import  SearchFiat from './functional/SearchFiat';
 import  CryptoList from './functional/CryptoList';
 import  FiatList from './functional/FiatList';
+import   Errorboundary from './container/Errorboundary';
 
 import  Calculate from './container/Calculate';
 import './App.css';
@@ -20,12 +21,12 @@ import './App.css';
           }
       }   
 
-      componentDidMount(){
+      componentDidMount(crypto,fiat){
         fetch("https://currency23.p.rapidapi.com/cripto", {
           "method": "GET",
           "headers": {
               "x-rapidapi-host": "currency23.p.rapidapi.com",
-              "x-rapidapi-key": "a52ac09f88msh86e0f7c158fee09p1d1f93jsn89f1eaefa3e8"
+              "x-rapidapi-key": "1cafc1611bmshd26f0100d392252p12b743jsn77d11e12a875"
           }
       })
       .then(res =>res.json()).then(data => {
@@ -36,13 +37,16 @@ import './App.css';
           "method": "GET",
           "headers": {
               "x-rapidapi-host": "currency23.p.rapidapi.com",
-              "x-rapidapi-key": "a52ac09f88msh86e0f7c158fee09p1d1f93jsn89f1eaefa3e8"
+              "x-rapidapi-key": "1cafc1611bmshd26f0100d392252p12b743jsn77d11e12a875"
           }
       })
       .then(res =>res.json()).then(data => {
         this.setState({fiat:data.data}); 
       })
+      console.log(crypto)
+      console.log(fiat)
     }
+    
   
       onSearchCryptoChange=(event)=>{
         this.setState({cryptoSearch:event.target.value})
@@ -61,6 +65,11 @@ import './App.css';
               return fi.symbol.toLowerCase().includes(this.state.fiatSearch.toLowerCase())
                 })
 
+                if(this.state.crypto.lenght === 0 || this.state.crypto.lenght === 0){
+                  return <h1>LOADING...</h1>
+                }
+                else{
+
       return(
         <div className="App">
             <h2 className='welcome'>Welcome Smarty!</h2>
@@ -72,12 +81,13 @@ import './App.css';
            <h3><SearchFiat  onChange={this.onSearchFiatChange}/></h3>
             
             <button type='submit' onSubmit={Calculate}>Convert</button>
-              <h3 className='result'></h3>
-              <h3>
+              {/* <h3 className='result'></h3> */}
+              <h3><Errorboundary>
               <ul className='display'>
               <li className='c'><CryptoList crypto={filteredCrypto}/></li>
                <li className='f'><FiatList fiat={filteredFiat}/></li>
               </ul>
+              </Errorboundary>
                </h3>
                
 
@@ -88,4 +98,5 @@ import './App.css';
       )
   }
 }
+    }
   export default App;
