@@ -28,13 +28,10 @@ import './App.css';
               "x-rapidapi-key": "a52ac09f88msh86e0f7c158fee09p1d1f93jsn89f1eaefa3e8"
           }
       })
-      .then(res => {
-        res.json().then(data => {
-          this.setState({crypto:data}); 
+      .then(res =>res.json()).then(data => {
+          this.setState({crypto:data.result}); 
         })
-      });
-      }
-      componentDidMount(){
+        
         fetch("https://currency23.p.rapidapi.com/exchange?int=1&base=USD&to=EUR", {
           "method": "GET",
           "headers": {
@@ -42,14 +39,11 @@ import './App.css';
               "x-rapidapi-key": "a52ac09f88msh86e0f7c158fee09p1d1f93jsn89f1eaefa3e8"
           }
       })
-      .then(res => {
-      res.json().then(data => {
-        this.setState({fiat:data}); 
+      .then(res =>res.json()).then(data => {
+        this.setState({fiat:data.data}); 
       })
-    });
     }
-    
-
+  
       onSearchCryptoChange=(event)=>{
         this.setState({cryptoSearch:event.target.value})
         }
