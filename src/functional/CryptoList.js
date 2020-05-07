@@ -5,16 +5,14 @@ const CryptoList=({crypto})=>{
  return(
         <div>
     {
-        
-            crypto.map((c,i)=>{
-            return(
-                <Crypto
+         crypto.map((c,i)=><React.Fragment key={i}>
+            <Crypto
                 id={crypto[i].id} 
-                symbol={crypto[i].symbol}
+                code={crypto[i].code}
                 price={crypto[i].price}/>
-            );
-        })
-        }
+            </React.Fragment>
+            )
+    }
         </div>
  )
 }
