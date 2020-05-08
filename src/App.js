@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import Clock from './container/Clock';
-import SearchCrypto from './functional/SearchCrypto';
-import SearchFiat from './functional/SearchFiat';
-import CryptoList from './functional/CryptoList';
-import FiatList from './functional/FiatList';
 
+import React,{Component} from 'react';
+import  Clock from './container/Clock';
+import  SearchCrypto from './functional/SearchCrypto';
+import  SearchFiat from './functional/SearchFiat';
+import  CryptoList from './functional/CryptoList';
+import  FiatList from './functional/FiatList';
+import   Errorboundary from './container/Errorboundary';
 import Calculate from './container/Calculate';
 import './App.css';
 
@@ -32,6 +33,7 @@ class App extends Component {
 				this.setState({ crypto: data.result });
 			});
 
+
 		fetch('https://currency23.p.rapidapi.com/exchange?int=1&base=USD&to=EUR', {
 			method: 'GET',
 			headers: {
@@ -45,6 +47,7 @@ class App extends Component {
 			});
 	}
 
+
 	onSearchCryptoChange = (event) => {
 		this.setState({ cryptoSearch: event.target.value });
 	};
@@ -52,6 +55,7 @@ class App extends Component {
 	onSearchFiatChange = (event) => {
 		this.setState({ fiatSearch: event.target.value });
 	};
+
 
 	render() {
 		const filteredCrypto = this.state.crypto.filter((cr) => {
@@ -65,6 +69,11 @@ class App extends Component {
 				.toLowerCase()
 				.includes(this.state.fiatSearch.toLowerCase());
 		});
+
+                if(this.state.crypto.lenght === 0 || this.state.crypto.lenght === 0){
+                  return <h1>LOADING...</h1>
+                }
+                else{
 
 		return (
 			<div className='App'>
@@ -107,4 +116,7 @@ class App extends Component {
 		);
 	}
 }
-export default App;
+
+    }
+  export default App;
+ 
