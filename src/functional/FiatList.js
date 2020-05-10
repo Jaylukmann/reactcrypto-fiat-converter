@@ -3,18 +3,20 @@ import Fiat from '../functional/Fiat';
 
 const FiatList = ({ fiat }) => {
 	return (
-		<div>
-		<h3>FIATS TICKER RATE</h3>
+		<React.Fragment>
+		<h3>EXCHANGE RATE</h3>
 
-			{fiat.map((fiat,i)=> {
-				const{rate}=fiat;
+			{fiat.map((fiats,i)=> {
+				const{rate}=fiats;
 				return(
-				<React.Fragment key={i}>
-				<Fiat  
+					<div  key={i}>
+					<Fiat 
 					  rate={rate} />
+					</div>
+					)})}
 				</React.Fragment>
-			)})}
-		</div>
+			
+		
 	);
 };
 

@@ -1,5 +1,7 @@
 import React from 'react';
-
+"result":{
+    "base":"USD"
+    "lastupdate":"2020-04-10 07:08 UTC"
 "data":{
 [
 0:{
@@ -9,105 +11,105 @@ import React from 'react';
 "calculatedstr":"1.00"
 "calculated":1
 }
-1:{5 items
+1:{
 "code":"EUR"
 "name":"Euro"
 "rate":0.9132963848
 "calculatedstr":"0.91"
 "calculated":0.91
 }
-2:{5 items
+2:{
 "code":"GBP"
 "name":"British Pound"
 "rate":0.8022266321
 "calculatedstr":"0.80"
 "calculated":0.8
 }
-3:{5 items
+3:{
 "code":"INR"
 "name":"Indian Rupee"
 "rate":75.9147179799
 "calculatedstr":"75.91"
 "calculated":75.91
 }
-4:{5 items
+4:{
 "code":"AUD"
 "name":"Australian Dollar"
 "rate":1.5732923532
 "calculatedstr":"1.57"
 "calculated":1.57
 }
-5:{5 items
+5:{5 
 "code":"CAD"
 "name":"Canadian Dollar"
 "rate":1.3950830107
 "calculatedstr":"1.40"
 "calculated":1.4
 }
-6:{5 items
+6:{
 "code":"SGD"
 "name":"Singapore Dollar"
 "rate":1.4126539821
 "calculatedstr":"1.41"
 "calculated":1.41
 }
-7:{5 items
+7:{
 "code":"CHF"
 "name":"Swiss Franc"
 "rate":0.9648934796
 "calculatedstr":"0.96"
 "calculated":0.96
 }
-8:{5 items
+8:{
 "code":"MYR"
 "name":"Malaysian Ringgit"
 "rate":4.3069264686
 "calculatedstr":"4.31"
 "calculated":4.31
 }
-9:{5 items
+9:{
 "code":"JPY"
 "name":"Japanese Yen"
 "rate":108.3696709506
 "calculatedstr":"108.37"
-"calculated":108.37
+"calculated":
 }
-10:{5 items
+10:{
 "code":"CNY"
 "name":"Chinese Yuan Renminbi"
 "rate":7.0353171709
 "calculatedstr":"7.04"
 "calculated":7.04
 }
-11:{5 items
+11:{
 "code":"NZD"
 "name":"New Zealand Dollar"
 "rate":1.6414915282
 "calculatedstr":"1.64"
 "calculated":1.64
 }
-12:{5 items
+12:{
 "code":"THB"
 "name":"Thai Baht"
 "rate":32.6464877684
 "calculatedstr":"32.65"
 "calculated":32.65
 }
-13:{5 items
+13:{
 "code":"HUF"
 "name":"Hungarian Forint"
 "rate":322.32083086
 "calculatedstr":"322.32"
 "calculated":322.32
 }
-14:{5 items
+14:{
 "code":"AED"
 "name":"Emirati Dirham"
 "rate":3.6725
 "calculatedstr":"3.67"
 "calculated":3.67
 }
-15:{5 items
+15:{
 "code":"HKD"
 "name":"Hong Kong Dollar"
 "rate":7.7529310864
@@ -1164,15 +1166,12 @@ import React from 'react';
 "calculated":0.8
 }
 166:{5 items
-"code":"ZMW"
-"name":"Zambian Kwacha"
-"rate":18.5956224254
-"calculatedstr":"18.60"
-"calculated":18.6
-}
-]
-}
-}
-
-
-]
+    "code":"ZMW"
+    "name":"Zambian Kwacha"
+    "rate":18.5956224254
+    "calculatedstr":"18.60"
+    "calculated":18.6
+    }
+    ]
+    }
+    }
