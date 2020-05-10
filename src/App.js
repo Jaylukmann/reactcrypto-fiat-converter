@@ -5,7 +5,6 @@ import  SearchCrypto from './functional/SearchCrypto';
 import  SearchFiat from './functional/SearchFiat';
 import  CryptoList from './functional/CryptoList';
 import  FiatList from './functional/FiatList';
-import   Errorboundary from './container/Errorboundary';
 import Calculate from './container/Calculate';
 import './App.css';
 
@@ -20,60 +19,64 @@ class App extends Component {
 		};
 	}
 
+	fetchcrypto=()=>{
+		fetch("https://mineable-coins.p.rapidapi.com/coins", {
+			"method": "GET",
+			"headers": {
+			"x-rapidapi-host": "mineable-coins.p.rapidapi.com",
+			"x-rapidapi-key": "1cafc1611bmshd26f0100d392252p12b743jsn77d11e12a875"
+			}
+			})
+				.then((res) => res.json())
+				.then((data) => {
+				this.setState({crypto:data});
+	  		})
+	}
+
+	fetchfiat=()=>{
+		fetch("https://currencyscoop.p.rapidapi.com/latest", {
+			"method": "GET",
+			"headers": {
+				"x-rapidapi-host": "currencyscoop.p.rapidapi.com",
+				"x-rapidapi-key": "1cafc1611bmshd26f0100d392252p12b743jsn77d11e12a875"
+			}
+			})
+				.then((res) => res.json())
+				.then((data) => {
+				this.setState({fiat:data.response});
+				});
+	}
+
 	componentDidMount() {
-		fetch('https://currency23.p.rapidapi.com/cripto', {
-			method: 'GET',
-			headers: {
-				'x-rapidapi-host': 'currency23.p.rapidapi.com',
-				'x-rapidapi-key': 'a52ac09f88msh86e0f7c158fee09p1d1f93jsn89f1eaefa3e8',
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				this.setState({ crypto: data.result });
-			});
-
-
-		fetch('https://currency23.p.rapidapi.com/exchange?int=1&base=USD&to=EUR', {
-			method: 'GET',
-			headers: {
-				'x-rapidapi-host': 'currency23.p.rapidapi.com',
-				'x-rapidapi-key': 'a52ac09f88msh86e0f7c158fee09p1d1f93jsn89f1eaefa3e8',
-			},
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				this.setState({ fiat: data.result.data });
-			});
+		this.fetchcrypto();
+		this.fetchfiat();
 	}
 
 
-	onSearchCryptoChange = (event) => {
-		this.setState({ cryptoSearch: event.target.value });
+	onSearchCryptoChange =(event) => {
+		this.setState({cryptoSearch:event.target.value });
 	};
 
-	onSearchFiatChange = (event) => {
-		this.setState({ fiatSearch: event.target.value });
+	onSearchFiatChange =(event) => {
+		 this.setState({fiatSearch:event.target.value });
+		 
 	};
 
 
 	render() {
-		const filteredCrypto = this.state.crypto.filter((cr) => {
-			return cr.currency
-				.toLowerCase()
-				.includes(this.state.cryptoSearch.toLowerCase());
+		const {crypto,fiat,cryptoSearch,fiatSearch} = this.state;
+		const filteredCrypto = crypto.filter(cryptos => {
+			return cryptos.coin.toLowerCase().includes(cryptoSearch.toLowerCase());
 		});
 
-		const filteredFiat = this.state.fiat.filter((fi) => {
-			return fi.code
-				.toLowerCase()
-				.includes(this.state.fiatSearch.toLowerCase());
+		const filteredFiat = fiat.filter(fiats => {
+			return fiats.rates.toLowerCase().includes(fiatSearch.toLowerCase());
 		});
 
-                if(this.state.crypto.lenght === 0 || this.state.crypto.lenght === 0){
-                  return <h1>LOADING...</h1>
-                }
-                else{
+      if(!fiat || !crypto){
+         return <h1>LOADING...</h1>
+      }
+      else{
 
 		return (
 			<div className='App'>
@@ -87,16 +90,16 @@ class App extends Component {
 				</h3>
 
 				<h3>
-					<SearchCrypto onChange={this.onSearchCryptoChange} />
+					<SearchCrypto searchC={this.onSearchCryptoChange} />
 				</h3>
 				<h3>
-					<SearchFiat onChange={this.onSearchFiatChange} />
+					<SearchFiat searchF={this.onSearchFiatChange} />
 				</h3>
 
 				<button type='submit' onSubmit={Calculate}>
 					Convert
 				</button>
-				<h3 className='result'>Result</h3>
+				{/* <h3 className='result'></h3> */}
 				<h3>
 					<ul className='display'>
 						<li className='c'>
@@ -106,7 +109,7 @@ class App extends Component {
 							<FiatList fiat={filteredFiat} />
 						</li>
 					</ul>
-				</h3>
+				</h3><br/><br/><br/><br/><br/><br/>
 
 				<p className='footer'>
 					Contact us:Email:jaylukmann@gmail.com,phone:08095832306 A trademark of

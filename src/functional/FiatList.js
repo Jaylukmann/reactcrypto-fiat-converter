@@ -2,14 +2,18 @@ import React from 'react';
 import Fiat from '../functional/Fiat';
 
 const FiatList = ({ fiat }) => {
-	console.log(fiat);
 	return (
 		<div>
-			{fiat.map((f, i) => (
+		<h3>FIATS TICKER RATE</h3>
+
+			{fiat.map((fiat,i)=> {
+				const{rate}=fiat;
+				return(
 				<React.Fragment key={i}>
-					<Fiat id={f.id} code={f.code} rate={f.rate} />
+				<Fiat  
+					  rate={rate} />
 				</React.Fragment>
-			))}
+			)})}
 		</div>
 	);
 };

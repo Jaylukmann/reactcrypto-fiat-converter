@@ -1,14 +1,17 @@
 import React from 'react';
-import  Fiat from '../functional/Fiat';
+
   
 
-const SearchFiat = ({fiatSearch,onChange})=>{
+const SearchFiat = (searchF,onSearchFiatChange)=>{
 	return(
 		<div className='pa2'>
 		<input 
 		className=''
 		type='search'
-		 placeholder='Search Fiat'/><select><option  onClick={Fiat}></option></select>
+		 placeholder='Search Fiat'
+		 onChange={() => onSearchFiatChange}
+		
+		 />
           <input type='text' placeholder="Enter fiat amount" ></input>
 		 </div>
 		 );

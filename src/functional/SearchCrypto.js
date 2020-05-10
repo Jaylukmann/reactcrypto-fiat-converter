@@ -1,17 +1,19 @@
 import React from 'react';
-import  Crypto from '../functional/Crypto';
+
 
 
 
 	
 
-const SearchCrypto = ({cryptoSearch,onChange})=>{
+const SearchCrypto = (searchC,onSearchCryptoChange)=>{
 	return(
 		<div className='pa2'>
 		<input 
 		className=''
 		type='search'
-		 placeholder='Search Cryptocurrency'/><select><option onClick={Crypto}> </option></select>
+		 placeholder='Search Cryptocurrency'
+		 onChange={() => onSearchCryptoChange}
+		 />
 		  <input type='text' placeholder="Enter Crypto amount"></input>
 		 </div>
 		 );

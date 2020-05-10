@@ -4,15 +4,18 @@ import  Crypto from '../functional/Crypto';
 const CryptoList=({crypto})=>{
  return(
         <div>
-    {
-         crypto.map((c,i)=><React.Fragment key={i}>
+         <h3>TICKER CRYPTOCURRENCY PRICE</h3>
+    {   
+        crypto.map((cryptos,i)=>{
+            const{coin,name,price}=cryptos;
+            return(
+        <React.Fragment key={i}>
             <Crypto
-                id={crypto[i].id} 
-                code={crypto[i].code}
-                price={crypto[i].price}/>
+                coin={coin}
+                name={name} 
+                price={price}/>
             </React.Fragment>
-            )
-    }
+        )})}
         </div>
  )
 }
