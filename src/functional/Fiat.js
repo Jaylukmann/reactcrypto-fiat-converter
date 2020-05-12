@@ -1,19 +1,13 @@
-import React from 'react' ;
+import React from 'react';
 
+const Fiat = ({ rate, ticker }) => {
+	return (
+		<div className='fiat'>
+			<p className='symbol'>{ticker}</p>
 
- const Fiat =({fiat})=> {
-
-    return (
-
-     <div className='fiat'>
-      <p className='symbol'>{fiat}</p>
-    
-        
-     </div>
-     
-     );
-  }
-   
-   
+			<p className='price'>{rate}</p>
+		</div>
+	);
+};
 
 export default Fiat;
