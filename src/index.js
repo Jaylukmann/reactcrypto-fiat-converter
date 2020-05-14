@@ -2,11 +2,8 @@ import React  from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import  CryptoList from './functional/CryptoList';
-import  FiatList from './functional/FiatList';
-import  Crypto from './functional/Crypto';
-import  Fiat from './functional/Fiat';
 import * as serviceWorker from './serviceWorker';
+import 'tachyons';
 
 ReactDOM.render(
   <App/>,

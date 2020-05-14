@@ -4,13 +4,13 @@ import Fiat from '../functional/Fiat';
 const FiatList = ({ fiat }) => {
 	return (
 		<div>
-			<h3>EXCHANGE RATE</h3>
+			{/* <p className='pt13 f3 blue'>FIAT RATE</p> */}
 
 			{fiat.map((f, i) => {
-				const { rate, ticker } = f;
+				const {ticker,rate } = f;
 				return (
 					<div key={i}>
-						<Fiat rate={ticker} ticker={rate} />
+						<Fiat ticker={ticker} rate={rate}  />
 					</div>
 				);
 			})}

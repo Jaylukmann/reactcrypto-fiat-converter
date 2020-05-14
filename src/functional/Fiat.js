@@ -1,11 +1,10 @@
 import React from 'react';
 
-const Fiat = ({ rate, ticker }) => {
+const Fiat = ({ ticker,rate }) => {
 	return (
-		<div className='fiat'>
-			<p className='symbol'>{ticker}</p>
-
-			<p className='price'>{rate}</p>
+		<div className='bg-blue white dib mr7 pa2 ma2 bs2 grow'>
+			<h3 >{ticker}</h3>
+			<p >{rate}</p>
 		</div>
 	);
 };

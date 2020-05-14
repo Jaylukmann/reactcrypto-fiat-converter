@@ -56,7 +56,7 @@ class App extends Component {
 	}
 
 	onSearchCryptoChange = (event) => {
-		this.setState({ cryptoSearch: event.target.value });
+		this.setState({ cryptoSearch: event.target.value.toLowerCase() });
 	};
 
 	onSearchFiatChange = (event) => {
@@ -66,7 +66,8 @@ class App extends Component {
 	render() {
 		const { crypto, fiat, cryptoSearch, fiatSearch } = this.state;
 		const filteredCrypto = crypto.filter((cryptos) => {
-			return cryptos.coin.toLowerCase().includes(cryptoSearch.toLowerCase());
+			return cryptos.coin.toLowerCase().includes(cryptoSearch) ||
+			 cryptos.name.toLowerCase().includes(cryptoSearch);
 		});
 
 		const filteredFiat = fiat.filter((fiats) => {
@@ -78,19 +79,18 @@ class App extends Component {
 		} else {
 			return (
 				<div className='App'>
-					<h2 className='welcome'>Welcome Smarty!</h2>
-					<h2 className='time'>
+					<h2 className='blue bg-white'>Welcome Smarty!</h2>
+					<h2 className='blue bg-white'>
 						<Clock great={'Time waits for nobody'} />
 					</h2>
-					<h3 className='appName'>Crypto-Fiat Converter</h3>
-					<h3 className='instruction'>
+					<h3 className='white bg-blue'>Crypto-Fiat Converter</h3>
+					<h3 className='white'>
 						Convert your crypto asset to your local currency below
 					</h3>
 
-					<h3>
+					<h3 className='flex justify-center tc'>
 						<SearchCrypto searchC={this.onSearchCryptoChange} />
-					</h3>
-					<h3>
+					
 						<SearchFiat searchF={this.onSearchFiatChange} />
 					</h3>
 
@@ -99,21 +99,19 @@ class App extends Component {
 					</button>
 					{/* <h3 className='result'></h3> */}
 					<h3>
-						<ul className='display'>
-							<li className='c'>
+						<ul className='flex justify-center tc list pl0'> 
+						
+							<li className=' justify-center tc'>
+							<h3 className='flex outline w-45 pa3 mr2 blue tc'>CRYPTOCURRENCIES/PRICES</h3>
 								<CryptoList crypto={filteredCrypto} />
 							</li>
-							<li className='f'>
+							<li className=' justify-center tc'>
+							<h3 className='flex outline w-40 pa3 ml3 blue tc'>FIATS/RATES</h3>
 								<FiatList fiat={filteredFiat} />
 							</li>
 						</ul>
+						<hr></hr>
 					</h3>
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
-					<br />
 
 					<p className='footer'>
 						Contact us:Email:jaylukmann@gmail.com,phone:08095832306 A trademark

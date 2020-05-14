@@ -5,16 +5,18 @@ import React from 'react';
 
 	
 
-const SearchCrypto = (searchC,onSearchCryptoChange)=>{
+const SearchCrypto = ({searchC})=>{
 	return(
-		<div className='pa2'>
+		<div className='flex w-50 pa3 mr2'>
 		<input 
-		className=''
+		className='input-reset ba b--black-20 pa2 mb2 db w-50'
 		type='search'
 		 placeholder='Search Cryptocurrency'
-		 onChange={() => onSearchCryptoChange}
+		 onChange={(event) => searchC(event)}
 		 />
-		  <input type='text' placeholder="Enter Crypto amount"></input>
+		  <input 
+		  className='input-reset ba b--black-20 pa2 mb2 db w-50'
+		  type='text' placeholder="Enter Crypto amount"></input>
 		 </div>
 		 );
       }

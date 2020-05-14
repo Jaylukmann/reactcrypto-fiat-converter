@@ -1,4 +1,8 @@
 import React from 'react';
+// import CryptoList from './functional/CryptoList';
+// import FiatList from './functional/FiatList';
+
+
 
 class Calculate extends React.Component{
    constructor(props){
