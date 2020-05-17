@@ -4,7 +4,6 @@ import Crypto from '../functional/Crypto';
 const CryptoList = ({ crypto }) => {
 	return (
 		<div>
-			{/* <p className='f3 blue'>CRYPTOCURRENCY</p> */}
 			{crypto.map((cryptos, i) => {
 				const {coin, price } = cryptos;
 				return (

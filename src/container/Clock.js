@@ -1,4 +1,5 @@
 import React from 'react';
+// import React,{useState} from 'react';
 
 
 class Clock extends React.Component{
@@ -23,11 +24,13 @@ class Clock extends React.Component{
       }
 
       render(){  
+          const {great}=this.props;
         return(
           <div>
-            <h2 >It is {new Date().toLocaleTimeString()}.</h2>
-            {/* <h2>{this.props.great}</h2> */}
-          </div>
+            <p><span className='mr2 f3'>{great}</span><span> {new Date().toLocaleTimeString()}</span></p>
+            </div>
+            
+          
         ); 
     }
 }

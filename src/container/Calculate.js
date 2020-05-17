@@ -1,19 +1,18 @@
 import React from 'react';
-// import CryptoList from './functional/CryptoList';
-// import FiatList from './functional/FiatList';
+import ConvertFiatToCrypto from '../container/ConvertFiatToCrypto';
+import ConvertCryptoToFiat from '../container/ConvertCryptoToFiat';
+import SearchCrypto from '../container/SearchCrypto';
+import SearchFiat from '../container/SearchFiat';
 
 
 
-class Calculate extends React.Component{
-   constructor(props){
-      super(props);
-      this.state={}
-  }
-   Calculate=()=>{
-
-   }
-
+const Calculate=()=>{
    
+   const {cryptoInputValue,ConvertCryptoToFiat,ConvertFiatToCrypto}=this.props;
+   return (cryptoInputValue='') 
+   ?ConvertFiatToCrypto()
+   :ConvertCryptoToFiat() ;
+
 }
 
 
