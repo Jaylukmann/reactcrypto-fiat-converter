@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Clock from './container/Clock';
-import SearchCrypto from './functional/SearchCrypto';
-import SearchFiat from './functional/SearchFiat';
+import SearchCrypto from './container/SearchCrypto';
+import SearchFiat from './container/SearchFiat';
 import CryptoList from './functional/CryptoList';
 import FiatList from './functional/FiatList';
 import Calculate from './container/Calculate';
@@ -14,8 +14,7 @@ class App extends Component {
 			fiat: [],
 			crypto: [],
 			cryptoSearch: '',
-			fiatSearch: '',
-			filteredFiat: [],
+			fiatSearch: ''
 		};
 	}
 
@@ -73,31 +72,32 @@ class App extends Component {
 		const filteredFiat = fiat.filter((fiats) => {
 			return fiats.ticker.toLowerCase().includes(fiatSearch);
 		});
-
-		if (!fiat || !crypto) {
-			return <h1>LOADING...</h1>;
-		} else {
+		if(!fiat && !crypto) {
+			return <h1 className='f1 blue grow tc'>LOADING FROM SERVER...</h1>;
+		   } else {
 			return (
 				<div className='App'>
-					<h2 className='blue bg-white'>Welcome Smarty!</h2>
-					<h2 className='blue bg-white'>
-						<Clock great={'Time waits for nobody'} />
-					</h2>
+					<h1 className='blue bg-white'>Welcome Smarty!</h1>
+					<p className='blue bg-white'>
+						<Clock great={'Move,time counts!'} />
+					</p>
 					<h3 className='white bg-blue'>Crypto-Fiat Converter</h3>
 					<h3 className='white'>
 						Convert your crypto asset to your local currency below
 					</h3>
 
 					<h3 className='flex justify-center tc'>
+					
 						<SearchCrypto searchC={this.onSearchCryptoChange} />
 					
 						<SearchFiat searchF={this.onSearchFiatChange} />
+						
 					</h3>
-
+				
 					<button type='submit' onSubmit={Calculate}>
 						Convert
 					</button>
-					{/* <h3 className='result'></h3> */}
+					<h3 className='result'></h3>
 					<h3>
 						<ul className='flex justify-center tc list pl0'> 
 						
@@ -110,10 +110,10 @@ class App extends Component {
 								<FiatList fiat={filteredFiat} />
 							</li>
 						</ul>
-						<hr></hr>
 					</h3>
+					<hr></hr>
 
-					<p className='footer'>
+					<p className='b f3 white bg-black'>
 						Contact us:Email:jaylukmann@gmail.com,phone:08095832306 A trademark
 						of Brainy Technologies.
 					</p>
@@ -122,4 +122,5 @@ class App extends Component {
 		}
 	}
 }
+
 export default App;
