@@ -1,40 +1,96 @@
-import React,{Component} from 'react';
-import SearchCrypto from './container/SearchCrypto';
-import SearchFiat from './container/SearchFiat';
-// import FiatList from '../functional/FiatList';
-// import CryptoList from '../functional/CryptoList';
+import React,{useState,Component, Fragment} from 'react';
+import CryptoList from './functional/CryptoList';
+import FiatList from './functional/FiatList';
+import SearchCrypto from './functional/SearchCrypto';
+import SearchFiat from './functional/SearchFiat';
 
-
-
-const getcryptoSelectedPrice=()=>{
-    const {crypto} = this.props;
-    if(cryptoSelected == crypto.coin){
-        return crypto.price
-    }
+const ConvertFiatToCrypto=(props)=>{
+    const getSelectedCrypto='';
+    const getSelectedFiat ='';
+    const getFiatInputValue ='';
+    const getCryptoSelectedPrice = '';
+    const getFiatSelectedRate = '';
     
-}
+    const fiatUsd = getFiatInputValue /getFiatSelectedRate;
+    const cryptoValue =  fiatUsd  /getCryptoSelectedPrice;
+    <Fragment>
+        <SearchCrypto
+          selectedCrypto  =  { getSelectedCrypto}/>
 
-const getFiatSelectedRate=()=>{
-    const {fiat} = this.props;
-    if(fiatSelected == fiat.ticker){
-        return fiat.rate
+         <SearchFiat 
+            selectedFiat = {getSelectedFiat}/>
+        
+        <SearchFiat
+       fiatInputValue = { getFiatInputValue}/>
+        
+         <CryptoList
+         price = {getCryptoSelectedPrice}
+        />
+
+        <FiatList 
+        rate= {getFiatSelectedRate}/>
+    </Fragment>
+
+        return(
+             <div>
+                 <h2>{cryptoValue}</h2>
+             </div>
+        )
     }
-}
 
 
-const ConvertFiatToCrypto=(crypto)=>{
-    const cryptoSelected = <SearchCrypto>{selectedCrypto}</SearchCrypto>
-    const fiatAmount = <SearchCrypto>{getCryptoInputValue}</SearchCrypto>
-    const fiatSelected = <SearchFiat>{getSelectedFiat}</SearchFiat>
-    const cryptoPrice = getcryptoSelectedPrice();
-    const fiatRate = getFiatSelectedRate();
-    const fiatUsd = fiatAmount /fiatRate;
-    const cryptoValue = fiatUsd / cryptoPrice;
-    return <h2>{cryptoValue}</h2>
-}
+    export default ConvertFiatToCrypto;
+
+
 
 		
 
 
 
-export default ConvertFiatToCrypto;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// class ConvertCryptoToFiat extends Component{
+//    constructor(props){
+//       super(props);
+//       this.state={}
+//   }
+//   ConvertCryptoToFiat=()=>{
+
+//    }
+//    render(){
+//        getFiatRate=()=>{
+
+//        }
+//        return(
+//            <div>
+
+//            </div>
+//        )
+//    }
+ 
+   
+// }
+
+
+
+
+// export default ConvertCryptoToFiat;
+
+

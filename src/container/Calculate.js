@@ -6,16 +6,32 @@ import SearchFiat from '../container/SearchFiat';
 
 
 
-const Calculate=()=>{
-   
-   const {cryptoInputValue,ConvertCryptoToFiat,ConvertFiatToCrypto}=this.props;
-   return (cryptoInputValue='') 
-   ?ConvertFiatToCrypto()
-   :ConvertCryptoToFiat() ;
 
+const calc=()=>{
+   return(
+      <div>
+         <button type='submit' onSubmit={Calculate}>
+               Convert
+         </button>
+      </div>
+   )
 }
 
-
-
+   const Calculate=()=>{
+      const  [cryptoInputValue,ConvertCryptoToFiat] = useState('');
+      const [fiatInputValue,ConvertFiatToCrypto] = useState('');
+      if(cryptoInputValue=''){
+         <ConvertFiatToCrypto/>
+         }
+         else if(fiatInputValue='')
+         {
+         <ConvertCryptoToFiat/>
+         }
+          else{
+             return null;
+          }
+      }
+     
+   
 
 export default Calculate;
