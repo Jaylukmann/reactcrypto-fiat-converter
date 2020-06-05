@@ -1,31 +1,41 @@
 
-import React,{useState,Component} from 'react';
+	import React,{useState, useRef, useEffect, useCallback} from 'react';
+	import FiatList from '../functional/FiatList';
+	
+		
+		 const SearchFiat=({searchF})=>{
+			const [selectedFiat, setSelectedFiat] = useState('');
+			const [fiatInputValue, setFiatInputValue] = useState('');
+			const [selectedFiatRate, setSelectedFiatRate] = useState('');
+			
+			return(			
+				<div className='w-50 pa3 mr2 flex'>
 
-const SearchCrypto=({props,searchF})=>{
-	const [selectedFiat, getSelectedFiat] = useState('');
-	const [fiatInputValue, getFiatInputValue] = useState('');
+				<input 
+				className='blue input-reset ba b--black-30 pa2 mb2 db w-50'
+				type='search'
+				placeholder='Search Fiat'
+				value={selectedFiat}
+				onInput={(event)=>setSelectedFiat(event.target.value)}
+				onChange={()=>setSelectedFiatRate(<FiatList
+					rate = {selectedFiatRate}
+				/>)}
+				onInput={(event) =>searchF(event)}>
+				</input>
 
-	return(			
-		<div className='w-50 pa3 mr2 flex'>
+				<input 
+				className='blue input-reset ba b--black-30 pa2 mb2 db w-50'
+				type='number'
+				placeholder='Fiat Amount'
+				value={fiatInputValue} 
+				onChange={(event)=> setFiatInputValue(event.target.value )}
+				></input>
 
-			<input 
-			className='input-reset ba b--black-30 pa2 mb2 db w-50'
-			type='search'
-			placeholder='Search Fiat'
-			value={selectedFiat} onChange={event =>getSelectedFiat(event.target.value)}
-			onChange={(event) =>searchF(event)}/>
-
-			<input 
-			className='input-reset ba b--black-30 pa2 mb2 db w-50'
-			type='search'
-			placeholder='Fiat Amount'
-			value={fiatInputValue} onChange={event => getFiatInputValue(event.target.value)}
-			onChange={(event) =>searchF(event)}/>
-
-		</div>
-	)
-}
-	export default SearchCrypto;
+			</div>
+		)
+	}			
+	       
+	export default SearchFiat;
 
 
 // class SearchFiat extends Component {

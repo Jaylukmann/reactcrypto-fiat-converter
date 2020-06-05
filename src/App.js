@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Clock from './container/Clock';
-import SearchCrypto from './container/SearchCrypto';
 import SearchFiat from './container/SearchFiat';
+import SearchCrypto from './container/SearchCrypto';
 import CryptoList from './functional/CryptoList';
 import FiatList from './functional/FiatList';
 import Calculate from './container/Calculate';
@@ -93,10 +93,11 @@ class App extends Component {
 						<SearchFiat searchF={this.onSearchFiatChange} />
 						
 					</h3>
+					<p>
+					<Calculate/>
+					</p>
+					
 				
-					<button type='submit' onSubmit={Calculate}>
-						Convert
-					</button>
 					<h3 className='result'></h3>
 					<h3>
 						<ul className='flex justify-center tc list pl0'> 

@@ -1,24 +1,36 @@
 
 import React,{useState,Component} from 'react';
+import CryptoList from '../functional/CryptoList';
 
-const SearchCrypto=({props,searchC})=>{
-	const [cryptoInputValue, getCryptoInputValue] = useState('');
-	const [selectedCrypto, getSelectedCrypto] = useState('');
+
+
+const SearchCrypto=({searchC})=>{	
+const  [selectedCrypto,setSelectedCrypto] = useState('');
+const [cryptoInputValue, setCryptoInputValue] = useState('');
+const [selectedCryptoPrice, setCryptoSelectedPrice] = useState('');
 	return(			
 		<div className='w-50 pa3 mr2 flex'>
-			<input 
-			className='input-reset ba b--black-30 pa2 mb2 db w-50'
+			<input
+			className='blue input-reset ba b--black-30 pa2 mb2 db w-50'
 			type='search'
 			placeholder='Search Cryptocurrency'
-			value={cryptoInputValue} onChange={event =>getSelectedCrypto(event.target.value)}
-			onChange={(event) =>searchC(event)}/>
+			value={selectedCrypto}
+			onInput={(event)=>setSelectedCrypto(event.target.value)}
+			onChange={()=>setCryptoSelectedPrice(<CryptoList
+				price = {selectedCryptoPrice}
+			/>)
+			}
+			onInput={(event) =>searchC(event)}>
+			</input>
+			
 
-			<input 
-			className='input-reset ba b--black-30 pa2 mb2 db w-50'
-			type='search'
+			<input
+			className='blue input-reset ba b--black-30 pa2 mb2 db w-50'
+			type='number'
 			placeholder='Cryptocurrency Amount'
-			value={selectedCrypto} onChange={event => getCryptoInputValue(event.target.value)}
-			onChange={(event) =>searchC(event)}/>
+			value={cryptoInputValue}
+			 onChange={event=> setCryptoInputValue(event.target.value)}
+			></input>
 
 		</div>
 	)

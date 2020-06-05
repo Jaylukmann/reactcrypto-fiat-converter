@@ -1,7 +1,7 @@
 import React from 'react';
 import Fiat from '../functional/Fiat';
 
-const FiatList = ({ fiat }) => {
+const FiatList = ({fiat}) => {
 	return (
 		<div>
 			{/* <p className='pt13 f3 blue'>FIAT RATE</p> */}

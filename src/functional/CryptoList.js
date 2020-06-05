@@ -1,7 +1,7 @@
 import React from 'react';
 import Crypto from '../functional/Crypto';
 
-const CryptoList = ({ crypto }) => {
+const CryptoList = ({crypto}) => {
 	return (
 		<div>
 			{crypto.map((cryptos, i) => {
