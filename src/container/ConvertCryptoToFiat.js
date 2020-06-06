@@ -1,4 +1,4 @@
-import React,{useState,Component, Fragment} from 'react';
+ 
 import CryptoList from './functional/CryptoList';
 import FiatList from './functional/FiatList';
 import SearchCrypto from './functional/SearchCrypto';
@@ -6,36 +6,46 @@ import SearchFiat from './functional/SearchFiat';
 
 
 const ConvertCryptoToFiat=(props)=>{
-    const getSelectedCrypto='';
-    const getSelectedFiat ='';
-    const getCryptoInputValue ='';
-    const getCryptoSelectedPrice = '';
-    const getFiatSelectedRate = ';'
+    const getSelectedCrypto= <SearchCrypto 
+    selectedCrypto  =   {getSelectedCrypto}
+  /> ;
+    const getSelectedFiat =  <SearchFiat
+    selectedFiat =  {getSelectedFiat}
+   />;
+    const getCryptoInputValue =  <SearchCrypto
+    cryptoInputValue =  {getCryptoInputValue}
+  />;
+    const getCryptoSelectedPrice =       <CryptoList
+    price = {getCryptoSelectedPrice}
+/>;
+    const getFiatSelectedRate = <FiatList 
+    rate = {getFiatSelectedRate}
+   />;
     
     const cryptoUsd = getCryptoSelectedPrice * getCryptoInputValue;
     const fiatValue = cryptoUsd * getFiatSelectedRate;
-   <Fragment>
-        <SearchCrypto 
-          selectedCrypto  =   {getSelectedCrypto}
-        />
+  //  <Fragment>
+  //       <SearchCrypto 
+  //         selectedCrypto  =   {getSelectedCrypto}
+  //       /> 
 
-         <SearchFiat
-         selectedFiat =  {getSelectedFiat}
-        />
+  //        <SearchFiat
+  //        selectedFiat =  {getSelectedFiat}
+  //       />
 
-        <SearchCrypto
-          cryptoInputValue =  {getCryptoInputValue}
-        />
+  //       <SearchCrypto
+  //         cryptoInputValue =  {getCryptoInputValue}
+  //       />
 
    
-        <CryptoList
-          price = {getCryptoSelectedPrice}
-    />
+  //       <CryptoList
+  //         price = {getCryptoSelectedPrice}
+  //   />
 
-        <FiatList 
-         rate = {getFiatSelectedRate}
-        />
-        </Fragment>
+  //       <FiatList 
+  //        rate = {getFiatSelectedRate}
+  //       />
+  //       </Fragment>
         return(
         <div>
             <h2>{fiatValue}</h2>

@@ -5,31 +5,40 @@ import SearchCrypto from './functional/SearchCrypto';
 import SearchFiat from './functional/SearchFiat';
 
 const ConvertFiatToCrypto=(props)=>{
-    const getSelectedCrypto='';
-    const getSelectedFiat ='';
-    const getFiatInputValue ='';
-    const getCryptoSelectedPrice = '';
-    const getFiatSelectedRate = '';
+    const getSelectedCrypto= <SearchCrypto
+    selectedCrypto  = { getSelectedCrypto}/>;
+    const getSelectedFiat = 
+    <SearchFiat 
+       selectedFiat = {getSelectedFiat}/>;
+    const getFiatInputValue =  
+    <SearchFiat
+   fiatInputValue = { getFiatInputValue}/>;
+    const getCryptoSelectedPrice =   <CryptoList
+    price = {getCryptoSelectedPrice}
+   />;
+    const getFiatSelectedRate = <FiatList 
+    rate= {getFiatSelectedRate}/>;
     
     const fiatUsd = getFiatInputValue /getFiatSelectedRate;
     const cryptoValue =  fiatUsd  /getCryptoSelectedPrice;
-    <Fragment>
-        <SearchCrypto
-          selectedCrypto  =  { getSelectedCrypto}/>
 
-         <SearchFiat 
-            selectedFiat = {getSelectedFiat}/>
-        
-        <SearchFiat
-       fiatInputValue = { getFiatInputValue}/>
-        
-         <CryptoList
-         price = {getCryptoSelectedPrice}
-        />
+    // <Fragment>
+    //     <SearchCrypto
+    //       selectedCrypto  = { getSelectedCrypto}/>
 
-        <FiatList 
-        rate= {getFiatSelectedRate}/>
-    </Fragment>
+    //      <SearchFiat 
+    //         selectedFiat = {getSelectedFiat}/>
+        
+    //     <SearchFiat
+    //    fiatInputValue = { getFiatInputValue}/>
+        
+    //      <CryptoList
+    //      price = {getCryptoSelectedPrice}
+    //     />
+
+    //     <FiatList 
+    //     rate= {getFiatSelectedRate}/>
+    // </Fragment>
 
         return(
              <div>

@@ -1,8 +1,7 @@
-import React from 'react';
+import React,{useState,Component, Fragment} from 'react';
 import ConvertFiatToCrypto from '../container/ConvertFiatToCrypto';
 import ConvertCryptoToFiat from '../container/ConvertCryptoToFiat';
-import SearchCrypto from '../container/SearchCrypto';
-import SearchFiat from '../container/SearchFiat';
+
 
 
 
@@ -20,8 +19,9 @@ const calc=()=>{
    const Calculate=()=>{
       const  [cryptoInputValue,ConvertCryptoToFiat] = useState('');
       const [fiatInputValue,ConvertFiatToCrypto] = useState('');
+
       if(cryptoInputValue=''){
-         <ConvertFiatToCrypto/>
+         <ConvertFiatToCrypto />
          }
          else if(fiatInputValue='')
          {
