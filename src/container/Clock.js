@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 // import React,{useState} from 'react';
 
 
@@ -26,9 +26,9 @@ class Clock extends React.Component{
       render(){  
           const {great}=this.props;
         return(
-          <div>
-            <p><span className='mr2 f3'>{great}</span><span> {new Date().toLocaleTimeString()}</span></p>
-            </div>
+          <Fragment>
+            <span className='mr2 f3'>{great}</span><span> {new Date().toLocaleTimeString()}</span>
+            </Fragment>
             
           
         ); 

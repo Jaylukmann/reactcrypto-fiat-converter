@@ -1,13 +1,9 @@
 
-	import React,{useState, useRef, useEffect, useCallback} from 'react';
-	import FiatList from '../functional/FiatList';
+	import React from 'react';
 	
 		
-		 const SearchFiat=({searchF})=>{
-			const [selectedFiat, setSelectedFiat] = useState('');
-			const [fiatInputValue, setFiatInputValue] = useState('');
-			const [selectedFiatRate, setSelectedFiatRate] = useState('');
-			
+		 const SearchFiat=({searchF, setFiatAmount})=>{
+
 			return(			
 				<div className='w-50 pa3 mr2 flex'>
 
@@ -15,20 +11,14 @@
 				className='blue input-reset ba b--black-30 pa2 mb2 db w-50'
 				type='search'
 				placeholder='Search Fiat'
-				value={selectedFiat}
-				onInput={(event)=>setSelectedFiat(event.target.value)}
-				onChange={()=>setSelectedFiatRate(<FiatList
-					rate = {selectedFiatRate}
-				/>)}
-				onInput={(event) =>searchF(event)}>
+				onChange={(event) =>searchF(event)}>
 				</input>
 
 				<input 
 				className='blue input-reset ba b--black-30 pa2 mb2 db w-50'
 				type='number'
 				placeholder='Fiat Amount'
-				value={fiatInputValue} 
-				onChange={(event)=> setFiatInputValue(event.target.value )}
+				onChange={(event)=> setFiatAmount(event)}
 				></input>
 
 			</div>
