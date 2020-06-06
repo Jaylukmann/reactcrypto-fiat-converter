@@ -11,25 +11,12 @@
 .App h1, h2, h3, h4, h5, h6, p{
   padding:0px;
   margin:0px;
-  color:blue
 }
 button{
   margin:20px;
   background: blue;
   color:white;
  
-}
-input{
-  margin:20px;
-  color:blue;
-}
-input::placeholder{
-  font-weight: bolder;
-  color:blue;
-}
-input>option{
-  font-weight: bolder;
-  color:blue;
 }
 
 
@@ -88,35 +75,16 @@ select >option{
   font-weight: bolder;
 }
 
-.crypto, .fiat{
-  display:flex;
-  color:blue;
-}
+
 .display{
-display:flex;
-flex-direction: row;
-width:50%;
-margin:0px;
-padding:0px 0px 0px 35%;
-}
-
-.c{
   display:flex;
-  flex-direction: row;
-  width:70%;
-  margin:0;
-  
-  }
+flex-direction: row;
+width:100%;
+color:white;
 
-  .f{
-    display:flex;
-    flex-direction: row;
-    width:70%;
-   
-    }
-.symbol,.price{
-  padding:10px;
 }
+
+
 
 
 
