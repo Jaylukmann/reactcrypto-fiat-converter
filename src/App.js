@@ -14,10 +14,14 @@ class App extends Component {
 			fiat: [],
 			crypto: [],
 			cryptoSearch: '',
-			fiatSearch: ''
+			fiatSearch: '',
+			cryptoAmount: 0,
+			fiatAmount: 0,
+			selectedFiat: {},
+			selectedCrypto: {}
 		};
 	}
-
+	
 	fetchcrypto = () => {
 		fetch('https://mineable-coins.p.rapidapi.com/coins', {
 			method: 'GET',
@@ -62,6 +66,16 @@ class App extends Component {
 		this.setState({ fiatSearch: event.target.value.toLowerCase() }); // Change to lowercase before saving to component state
 	};
 
+	onCryptoAmount = (event) => {
+		this.setState({ cryptoAmount: Number(event.target.value) });
+		this.setState({ fiatAmount: 0 });
+	};
+
+	onFiatAmount = (event) => {
+		this.setState({ cryptoAmount: 0 });
+		this.setState({ fiatAmount: Number(event.target.value) }); // Change to lowercase before saving to component state
+	};
+
 	render() {
 		const { crypto, fiat, cryptoSearch, fiatSearch } = this.state;
 		const filteredCrypto = crypto.filter((cryptos) => {
@@ -88,17 +102,24 @@ class App extends Component {
 
 					<h3 className='flex justify-center tc'>
 					
-						<SearchCrypto searchC={this.onSearchCryptoChange} />
+						<SearchCrypto searchC={this.onSearchCryptoChange} selectedCrypto={this.state.cryptoSearch} setCryptoAmount={this.onCryptoAmount}/>
 					
-						<SearchFiat searchF={this.onSearchFiatChange} />
+						<SearchFiat searchF={this.onSearchFiatChange} selectedFiat={this.state.fiatSearch} setFiatAmount={this.onFiatAmount}/>
 						
 					</h3>
 					<p>
-					<Calculate/>
+					<Calculate 
+						cryptoSearch={this.state.cryptoSearch}
+						cryptoValue={this.state.cryptoAmount}
+						fiatSearch={this.state.fiatSearch}
+						fiatValue={this.state.fiatAmount}
+						filteredCrypto={filteredCrypto}
+						filteredFiat={filteredFiat}					
+					/>
 					</p>
 					
 				
-					<h3 className='result'></h3>
+					<h3 className='result'>Result</h3>
 					<h3>
 						<ul className='flex justify-center tc list pl0'> 
 						

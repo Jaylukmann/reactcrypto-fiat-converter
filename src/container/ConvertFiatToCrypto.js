@@ -1,58 +1,15 @@
-import React,{useState,Component, Fragment} from 'react';
-import CryptoList from './functional/CryptoList';
-import FiatList from './functional/FiatList';
-import SearchCrypto from './functional/SearchCrypto';
-import SearchFiat from './functional/SearchFiat';
+import React from 'react';
 
-const ConvertFiatToCrypto=(props)=>{
-    const getSelectedCrypto= <SearchCrypto
-    selectedCrypto  = { getSelectedCrypto}/>;
-    const getSelectedFiat = 
-    <SearchFiat 
-       selectedFiat = {getSelectedFiat}/>;
-    const getFiatInputValue =  
-    <SearchFiat
-   fiatInputValue = { getFiatInputValue}/>;
-    const getCryptoSelectedPrice =   <CryptoList
-    price = {getCryptoSelectedPrice}
-   />;
-    const getFiatSelectedRate = <FiatList 
-    rate= {getFiatSelectedRate}/>;
-    
-    const fiatUsd = getFiatInputValue /getFiatSelectedRate;
-    const cryptoValue =  fiatUsd  /getCryptoSelectedPrice;
-
-    // <Fragment>
-    //     <SearchCrypto
-    //       selectedCrypto  = { getSelectedCrypto}/>
-
-    //      <SearchFiat 
-    //         selectedFiat = {getSelectedFiat}/>
-        
-    //     <SearchFiat
-    //    fiatInputValue = { getFiatInputValue}/>
-        
-    //      <CryptoList
-    //      price = {getCryptoSelectedPrice}
-    //     />
-
-    //     <FiatList 
-    //     rate= {getFiatSelectedRate}/>
-    // </Fragment>
-
-        return(
-             <div>
-                 <h2>{cryptoValue}</h2>
-             </div>
-        )
+const ConvertFiatToCrypto=({filteredCrypto, filteredFiat, fiatValue})=>{
+    if (filteredCrypto.length > 0 && filteredFiat.length > 0) {
+        const fiatUsd = fiatValue / filteredFiat[0].rate
+        const cryptoValue = fiatUsd / filteredCrypto[0].price
+        console.log(cryptoValue)
+        return  <span> {cryptoValue} {filteredCrypto[0].coin}</span>
     }
-
-
+    return null;
+}
     export default ConvertFiatToCrypto;
-
-
-
-		
 
 
 
