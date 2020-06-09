@@ -79,12 +79,12 @@ class App extends Component {
 	render() {
 		const { crypto, fiat, cryptoSearch, fiatSearch } = this.state;
 		const filteredCrypto = crypto.filter((cryptos) => {
-			return cryptos.coin.toLowerCase().includes(cryptoSearch) ||
-			 cryptos.name.toLowerCase().includes(cryptoSearch);
+			return cryptos.coin.toLowerCase() === (cryptoSearch) ||
+			 cryptos.name.toLowerCase() === (cryptoSearch);
 		});
 
 		const filteredFiat = fiat.filter((fiats) => {
-			return fiats.ticker.toLowerCase().includes(fiatSearch);
+			return fiats.ticker.toLowerCase() === (fiatSearch);
 		});
 		if(!fiat && !crypto) {
 			return <h1 className='f1 blue grow tc'>LOADING FROM SERVER...</h1>;
@@ -107,7 +107,7 @@ class App extends Component {
 						<SearchFiat searchF={this.onSearchFiatChange} selectedFiat={this.state.fiatSearch} setFiatAmount={this.onFiatAmount}/>
 						
 					</h3>
-					<p>
+					<h3 className='result white bg-blue'>CONVERSION:
 					<Calculate 
 						cryptoSearch={this.state.cryptoSearch}
 						cryptoValue={this.state.cryptoAmount}
@@ -115,20 +115,17 @@ class App extends Component {
 						fiatValue={this.state.fiatAmount}
 						filteredCrypto={filteredCrypto}
 						filteredFiat={filteredFiat}					
-					/>
-					</p>
-					
-				
-					<h3 className='result'>Result</h3>
+					/></h3>
+
 					<h3>
 						<ul className='flex justify-center tc list pl0'> 
 						
 							<li className=' justify-center tc'>
-							<h3 className='flex outline w-45 pa3 mr2 blue tc'>CRYPTOCURRENCIES/PRICES</h3>
+							<h3 className='flex outline w-45 pa3 mr2 blue tc'>CRYPTOCURRENCIES(USD)</h3>
 								<CryptoList crypto={filteredCrypto} />
 							</li>
 							<li className=' justify-center tc'>
-							<h3 className='flex outline w-40 pa3 ml3 blue tc'>FIATS/RATES</h3>
+							<h3 className='flex outline w-40 pa3 ml3 blue tc'>FIATS(USD)</h3>
 								<FiatList fiat={filteredFiat} />
 							</li>
 						</ul>
