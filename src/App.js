@@ -19,8 +19,9 @@ class App extends Component {
 			fiatAmount: 0,
 			cryptoDisplay: false,
 			fiatDisplay: false,
-			selectedFiat: {},
-			selectedCrypto: {}
+			selectedFiat: null,
+			selectedCrypto: null,
+			convertToCrypto: true
 		};
 	}
 	
@@ -89,7 +90,21 @@ class App extends Component {
 			this.setState({fiatDisplay:true});
 			// this.listFiat();	
 		};
-	
+
+	selectFiat = (e) => {
+		const selectedFiat = this.state.fiat.find(f => f.ticker === e.target.value) // identify the fiat from the list in the state
+		this.setState({ selectedFiat }) // set the selected fiat for future logic calls
+	}
+
+	selectCrypto = (e) => {
+		const selectedCrypto = this.state.crypto.find(f => f.coin === e.target.value) // identify the fiat from the list in the state
+		this.setState({ selectedCrypto }) // set the selected fiat for future logic calls
+	}
+
+	changeConversion = () => {
+		this.setState({ convertToCrypto: !this.state.convertToCrypto })
+	}
+
 	render() {
 		const { crypto, fiat, cryptoSearch, fiatSearch } = this.state;
 
@@ -132,9 +147,16 @@ class App extends Component {
 					   searchC={this.onSearchCryptoChange} 
 					   toggleCrypto ={this.toggleCryptoButton}
 					   selectedCrypto={this.state.cryptoSearch} 
-					   setCryptoAmount={this.onCryptoAmount}/>  
+						 setCryptoAmount={this.onCryptoAmount}
+						 crypto={this.state.crypto}
+						selectCrypto={this.selectCrypto}	
+							/>  
 					</h3>
-
+					<p 
+						onClick={this.changeConversion}>
+						<small> click me </small> 
+						Converting from {this.state.convertToCrypto ? 'Crypto' : 'Fiat'} to {this.state.convertToCrypto ? 'Fiat' : 'Crypto'}
+						<small> click me </small></p>
 					{/* <p><CryptoList crypto={this.listCrypto} /></p> */}
 
 					<h3 className='flex justify-center tc'>
@@ -142,19 +164,25 @@ class App extends Component {
 						searchF={this.onSearchFiatChange}
 						toggleFiat ={this.toggleFiatButton} 
 						selectedFiat={this.state.fiatSearch}
-						 setFiatAmount={this.onFiatAmount}/>
+						setFiatAmount={this.onFiatAmount}
+						fiat={this.state.fiat}	
+						selectFiat={this.selectFiat}
+					/>
 					</h3>
 					{/* <p> <FiatList fiat={this.listFiat} /></p> */}
 
 					<h3 className='result white bg-blue'>
 					Conversion:
 					<Calculate 
+						selectedCrypto={this.state.selectedCrypto}
+						selectedFiat={this.state.selectedFiat}
 						cryptoSearch={this.state.cryptoSearch}
 						cryptoValue={this.state.cryptoAmount}
 						fiatSearch={this.state.fiatSearch}
 						fiatValue={this.state.fiatAmount}
 						filteredCrypto={filteredCrypto}
-						filteredFiat={filteredFiat}					
+						filteredFiat={filteredFiat}				
+						convertToCrypto={this.state.convertToCrypto}	
 					/></h3>
 					
 

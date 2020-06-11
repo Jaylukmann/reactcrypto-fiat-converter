@@ -1,13 +1,9 @@
 import React from 'react';
 
-const ConvertCryptoToFiat=({filteredCrypto, filteredFiat, cryptoValue})=>{
-  if (filteredCrypto.length > 0 && filteredFiat.length > 0) {
-    const cryptoUsd = filteredCrypto[0].price * cryptoValue
-    const fiatValue = cryptoUsd * filteredFiat[0].rate
-    return  <span> {filteredFiat[0].ticker} {fiatValue} </span>
-}
-return null;
-
+const ConvertCryptoToFiat=({selectedCrypto, selectedFiat, cryptoValue})=>{
+    const cryptoUsd = selectedCrypto.price * cryptoValue
+    const fiatValue = cryptoUsd * selectedFiat.rate
+    return  <span> {selectedFiat.ticker} {fiatValue} </span>
 }
 
 export default ConvertCryptoToFiat;
