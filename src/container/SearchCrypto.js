@@ -1,26 +1,35 @@
 import React from 'react';
 
-const SearchCrypto=({searchC, setCryptoAmount})=>{
+const SearchCrypto = ({toggleCrypto,searchC,setCryptoAmount})=>{
+	return(
+		<form className='tc'>
+		<div className='flex w-160 pa3 mr1 ml1 tc'>
+	
+		{/* <button onClick={(event) =>toggleCrypto(event)}></button> */}
+		<select className='input-reset ba b--black-20 pa2 mb2 db w-25'>
+		  <option value=""  
+		    onChange={(event) => searchC(event)}>
+		  </option>
+  		</select>  
 
-	return(			
-		<div className='w-50 pa3 mr2 flex'>
-			<input
-			className='blue input-reset ba b--black-30 pa2 mb2 db w-50'
-			type='search'
-			placeholder='Search Cryptocurrency'
-			onChange={(event) =>searchC(event)}>
-			</input>
-			
+		<input 
+		className='input-reset ba b--black-20 pa2 mb2 db w-80'
+		type='search'
+		 placeholder='Search Cryptocurrency'
+		 onChange={(event) => searchC(event)}
+		//  onClick={(event) => listC(event)}
+		 ></input>
+		
+		  <input 
+		  className='input-reset ba b--black-20 pa2 mb2 db w-70'
+		  type='text' placeholder="Enter Crypto amount"
+		  onChange={(event) => setCryptoAmount(event)}>
+		  </input>
 
-			<input
-			className='blue input-reset ba b--black-30 pa2 mb2 db w-50'
-			type='number'
-			placeholder='Cryptocurrency Amount'
-			onChange={(event) => setCryptoAmount(event)}
-			></input>
+		 </div>
+		 </form>
+		 );
+      }
 
-		</div>
-	)
-}
 
 export default SearchCrypto;

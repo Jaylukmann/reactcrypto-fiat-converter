@@ -17,6 +17,8 @@ class App extends Component {
 			fiatSearch: '',
 			cryptoAmount: 0,
 			fiatAmount: 0,
+			cryptoDisplay: false,
+			fiatDisplay: false,
 			selectedFiat: {},
 			selectedCrypto: {}
 		};
@@ -35,6 +37,7 @@ class App extends Component {
 				this.setState({ crypto: data });
 			});
 	};
+	
 
 	fetchfiat = () => {
 		fetch('https://currencyscoop.p.rapidapi.com/latest', {
@@ -57,27 +60,39 @@ class App extends Component {
 		this.fetchcrypto();
 		this.fetchfiat();
 	}
-
+     //searchC props
 	onSearchCryptoChange = (event) => {
 		this.setState({ cryptoSearch: event.target.value.toLowerCase() });
 	};
-
+      //searchF props
 	onSearchFiatChange = (event) => {
 		this.setState({ fiatSearch: event.target.value.toLowerCase() }); // Change to lowercase before saving to component state
 	};
-
+      //setCryptoAmount props
 	onCryptoAmount = (event) => {
 		this.setState({ cryptoAmount: Number(event.target.value) });
 		this.setState({ fiatAmount: 0 });
 	};
-
+        //setFiatAmount props
 	onFiatAmount = (event) => {
 		this.setState({ cryptoAmount: 0 });
 		this.setState({ fiatAmount: Number(event.target.value) }); // Change to lowercase before saving to component state
 	};
-
+		 //toggleCrypto props
+		  toggleCryptoButton=(event)=>{
+			this.setState({cryptoDisplay:true});
+			// this.listCrypto();
+				
+		};
+			 //toggleFiat props
+		 toggleFiatButton=(event)=>{
+			this.setState({fiatDisplay:true});
+			// this.listFiat();	
+		};
+	
 	render() {
 		const { crypto, fiat, cryptoSearch, fiatSearch } = this.state;
+
 		const filteredCrypto = crypto.filter((cryptos) => {
 			return cryptos.coin.toLowerCase() === (cryptoSearch) ||
 			 cryptos.name.toLowerCase() === (cryptoSearch);
@@ -86,14 +101,28 @@ class App extends Component {
 		const filteredFiat = fiat.filter((fiats) => {
 			return fiats.ticker.toLowerCase() === (fiatSearch);
 		});
+
+		const listCrypto=(event)=>
+		fiat.filter((f) => {
+			return f.ticker.toLowerCase().includes(SearchFiat);
+		});
+	
+		const listFiat=(event)=>
+		crypto.filter((c) => {
+			return c.coin.toLowerCase().includes(SearchCrypto) ||
+			c.name.toLowerCase().includes(SearchCrypto);
+			});
+
+		
+
 		if(!fiat && !crypto) {
-			return <h1 className='f1 blue grow tc'>LOADING FROM SERVER...</h1>;
+			return <h1 className='f1 blue grow tc'>LOADING DATA...</h1>;
 		   } else {
 			return (
 				<div className='App'>
 					<h1 className='blue bg-white'>Welcome Smarty!</h1>
 					<p className='blue bg-white'>
-						<Clock great={'Move,time counts!'} />
+						<Clock clockMsg={'Move,time counts!'} />
 					</p>
 					<h3 className='white bg-blue'>Crypto-Fiat Converter</h3>
 					<h3 className='white'>
@@ -101,13 +130,26 @@ class App extends Component {
 					</h3>
 
 					<h3 className='flex justify-center tc'>
-					
-						<SearchCrypto searchC={this.onSearchCryptoChange} selectedCrypto={this.state.cryptoSearch} setCryptoAmount={this.onCryptoAmount}/>
-					
-						<SearchFiat searchF={this.onSearchFiatChange} selectedFiat={this.state.fiatSearch} setFiatAmount={this.onFiatAmount}/>
-						
+					   <SearchCrypto 
+					   searchC={this.onSearchCryptoChange} 
+					   toggleCrypto ={this.toggleCryptoButton}
+					   selectedCrypto={this.state.cryptoSearch} 
+					   setCryptoAmount={this.onCryptoAmount}/>  
 					</h3>
-					<h3 className='result white bg-blue'>CONVERSION:
+
+					{/* <p><CryptoList crypto={this.listCrypto} /></p> */}
+
+					<h3 className='flex justify-center tc'>
+						<SearchFiat  
+						searchF={this.onSearchFiatChange}
+						toggleFiat ={this.toggleFiatButton} 
+						selectedFiat={this.state.fiatSearch}
+						 setFiatAmount={this.onFiatAmount}/>
+					</h3>
+					{/* <p> <FiatList fiat={this.listFiat} /></p> */}
+
+					<h3 className='result white bg-blue'>
+					Conversion:
 					<Calculate 
 						cryptoSearch={this.state.cryptoSearch}
 						cryptoValue={this.state.cryptoAmount}
@@ -116,6 +158,7 @@ class App extends Component {
 						filteredCrypto={filteredCrypto}
 						filteredFiat={filteredFiat}					
 					/></h3>
+					
 
 					<h3>
 						<ul className='flex justify-center tc list pl0'> 
@@ -132,7 +175,7 @@ class App extends Component {
 					</h3>
 					<hr></hr>
 
-					<p className='b f3 white bg-black'>
+					<p className='b white bg-black'>
 						Contact us:Email:jaylukmann@gmail.com,phone:08095832306 A trademark
 						of Brainy Technologies.
 					</p>

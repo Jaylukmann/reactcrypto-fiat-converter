@@ -24,10 +24,10 @@ class Clock extends React.Component{
       }
 
       render(){  
-          const {great}=this.props;
+          const {clockMsg}=this.props;
         return(
           <Fragment>
-            <span className='mr2 f3'>{great}</span><span> {new Date().toLocaleTimeString()}</span>
+            <span className='mr2 f3'>{clockMsg}</span><span> {new Date().toLocaleTimeString()}</span>
             </Fragment>
             
           

@@ -2,7 +2,7 @@ import React from 'react' ;
 
 
 
- const Crypto =({coin,price,props})=> {
+ const Crypto =({coin,price})=> {
     return (
       
   <div className='bg-blue white dib pr3 pa2 ma2 grow'>
