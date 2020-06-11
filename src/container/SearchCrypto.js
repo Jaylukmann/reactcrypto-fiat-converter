@@ -10,16 +10,17 @@ const SearchCrypto = ({toggleCrypto,searchC,listC,setCryptoAmount, crypto, selec
 }
 	return(
 		<form className='tc'>
-		<div className='flex w-160 pa3 mr1 ml1 tc'>
+		<div className='flex w-120 pa3 mr1 ml1 tc'>
 	
 		{/* <button onClick={(event) =>toggleCrypto(event)}></button> */}
 		<select className='input-reset ba b--black-20 pa2 mb2 db w-25'
-		onChange={(e) => selectCrypto(e)}
-		>
-		  {
-				listCryptoSymbols()
-			}
+		onChange={(e) => selectCrypto(e)}>
+		  {listCryptoSymbols()}
   	</select> 
+
+	  <input className='input-reset ba b--black-20 pa2 mb2 db w-40'
+			type='search' placeholder="SearhCrypto"
+			onChange={(event) => searchC(event)}></input>
 		
 		  <input 
 		  className='input-reset ba b--black-20 pa2 mb2 db w-70'

@@ -10,18 +10,18 @@
 
 		return (
 			<form className='tc'>
-			<div className='flex w-160 pa3 mr2 tc mr1 ml1'>
+			<div className='flex w-130 pa3 mr2 tc mr1 ml1'>
 			
 		{/* <button onClick={(event) =>toggleCrypto(event)}></button> */}
-		<select className='input-reset ba b--black-20 pa2 mb2 db w-25'
-			onChange={(e) => selectFiat(e)}
-		>
-	
-		  {
-				listFiatTickers()
-			}
-  	</select>  
-		
+		<select className='input-reset ba b--black-20 pa2 mb2 db w-20'
+			onChange={(e) => selectFiat(e)}>
+			{listFiatTickers()}
+  		</select>  
+		  
+		<input className='input-reset ba b--black-20 pa2 mb2 db w-40'
+			type='search' placeholder="SearchFiat"
+			onChange={(event) => searchF(event)}></input>
+
 		  <input 
 		  className='input-reset ba b--black-20 pa2 mb2 db w-70'
 		  type='text' placeholder="Enter Fiat amount"

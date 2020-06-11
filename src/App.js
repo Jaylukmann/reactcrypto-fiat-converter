@@ -17,8 +17,6 @@ class App extends Component {
 			fiatSearch: '',
 			cryptoAmount: 0,
 			fiatAmount: 0,
-			cryptoDisplay: false,
-			fiatDisplay: false,
 			selectedFiat: null,
 			selectedCrypto: null,
 			convertToCrypto: true
@@ -152,11 +150,12 @@ class App extends Component {
 						selectCrypto={this.selectCrypto}	
 							/>  
 					</h3>
-					<p 
-						onClick={this.changeConversion}>
-						<small> click me </small> 
-						Converting from {this.state.convertToCrypto ? 'Crypto' : 'Fiat'} to {this.state.convertToCrypto ? 'Fiat' : 'Crypto'}
-						<small> click me </small></p>
+					 <button onClick={this.changeConversion}>
+					 switch:CONVERT FROM {this.state.convertToCrypto ? 'CRYPTO' : 'FIAT'} TO {this.state.convertToCrypto ? 'FIAT' : 'CRYPTO'}
+					 </button> 
+						
+						
+						
 					{/* <p><CryptoList crypto={this.listCrypto} /></p> */}
 
 					<h3 className='flex justify-center tc'>
