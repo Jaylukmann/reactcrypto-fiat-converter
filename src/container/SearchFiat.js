@@ -2,7 +2,7 @@
 	import React from 'react';
 	
 
-	const SearchFiat = ({toggleFiat,searchF,setFiatAmount }) => {
+	const SearchFiat = ({toggleFiat,searchF,listF,setFiatAmount }) => {
 		return (
 			<form className='tc'>
 			<div className='flex w-160 pa3 mr2 tc mr1 ml1'>
@@ -11,7 +11,7 @@
 		<select className='input-reset ba b--black-20 pa2 mb2 db w-25'>
 	
 		  <option value=""  Search Fiat
-		    onChange={(event) => searchF(event)}>
+		    onClick={(event) => listF(event)}>
 		  </option>
   		</select>  
 
@@ -20,7 +20,7 @@
 		type='search'
 		 placeholder='Search Fiat'
 		 onChange={(event) => searchF(event)}
-		//  onClick={(event) => listC(event)}
+		//  onClick={(event) => listF(event)}
 		 ></input>
 		
 		  <input 

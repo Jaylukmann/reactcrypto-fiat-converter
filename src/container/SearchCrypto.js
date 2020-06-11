@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchCrypto = ({toggleCrypto,searchC,setCryptoAmount})=>{
+const SearchCrypto = ({toggleCrypto,searchC,listC,setCryptoAmount})=>{
 	return(
 		<form className='tc'>
 		<div className='flex w-160 pa3 mr1 ml1 tc'>
@@ -8,7 +8,7 @@ const SearchCrypto = ({toggleCrypto,searchC,setCryptoAmount})=>{
 		{/* <button onClick={(event) =>toggleCrypto(event)}></button> */}
 		<select className='input-reset ba b--black-20 pa2 mb2 db w-25'>
 		  <option value=""  
-		    onChange={(event) => searchC(event)}>
+		    onClick={(event) => listC(event)}>
 		  </option>
   		</select>  
 

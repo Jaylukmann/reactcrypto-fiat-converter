@@ -102,13 +102,11 @@ class App extends Component {
 			return fiats.ticker.toLowerCase() === (fiatSearch);
 		});
 
-		const listCrypto=(event)=>
-		fiat.filter((f) => {
+		const listFiat= fiat.filter((f) => {
 			return f.ticker.toLowerCase().includes(SearchFiat);
 		});
 	
-		const listFiat=(event)=>
-		crypto.filter((c) => {
+		const listCrypto = crypto.filter((c) => {
 			return c.coin.toLowerCase().includes(SearchCrypto) ||
 			c.name.toLowerCase().includes(SearchCrypto);
 			});
